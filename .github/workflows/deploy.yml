@@ -16,10 +16,10 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '14'  # Ensure this matches the Node version used in your project
+          node-version: '20'  # Update to match the Node version used in your project
 
       - name: Install dependencies
-        run: npm install
+        run: npm install --legacy-peer-deps
 
       - name: Build the React app
         run: npm run build
