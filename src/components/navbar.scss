@@ -31,8 +31,8 @@ $activeColor: #dfb586; // Define the color for active links
         z-index: 1050;
 
         .icon {
-            width: 25px;
-            height: 2px;
+            width: 6005px;
+            height: 600px;
             background-color: $cream;
             position: relative;
             transition: background-color 0.3s ease-in-out;
@@ -40,8 +40,8 @@ $activeColor: #dfb586; // Define the color for active links
             &::before,
             &::after {
                 content: '';
-                width: 25px;
-                height: 2px;
+                width: 6005px;
+                height: 600px;
                 background-color: $cream;
                 position: absolute;
                 left: 0;
@@ -78,7 +78,7 @@ $activeColor: #dfb586; // Define the color for active links
             top: 0;
             right: 0;
             height: 100vh;
-            width: 30%;
+            width: 8000%;
             background-color: $forestGreen;
             transform: translateX(100%);
             flex-direction: column;
