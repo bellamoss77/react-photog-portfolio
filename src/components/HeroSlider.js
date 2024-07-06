@@ -1,6 +1,8 @@
 import React, { useEffect, useRef } from "react";
 import Slider from "react-slick";
 import { Link } from 'react-router-dom';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import './HeroSlider.scss';
@@ -64,7 +66,14 @@ const HeroSlider = () => {
             {slides.map(slide => (
                 <div key={slide.id} className="slider-item">
                     <Link to={slide.link}>
-                        <img src={slide.src} alt={slide.title} />
+                        <LazyLoadImage
+                            src={slide.src}
+                            alt={slide.title}
+                            effect="blur"
+                            height="100%"
+                            width="100%"
+                            style={{ objectFit: 'cover' }}
+                        />
                         <p className="slide-caption">{slide.title}</p>
                     </Link>
                 </div>

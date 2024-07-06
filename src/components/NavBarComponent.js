@@ -18,12 +18,18 @@ const NavBarComponent = () => {
 
     const toggleDropdown = (isOpen) => {
         setDropdownOpen(isOpen);
-    }
+    };
 
     const handleKeyDown = (event) => {
         if (event.key === 'Escape') {
             setMenuOpen(false);
+            setDropdownOpen(false);
         }
+    };
+
+    const handleLinkClick = () => {
+        setMenuOpen(false);
+        setDropdownOpen(false);
     };
 
     useEffect(() => {
@@ -38,8 +44,8 @@ const NavBarComponent = () => {
             <Container>
                 <Navbar.Brand href="#home">
                     <img
-                        src="https://raw.githubusercontent.com/bellamoss77/react-photog-portfolio/449a4734a81535e6dacb488230b3ffb9e5fd6d67/public/LOGO.svg" 
-                        height="30"
+                        src="https://raw.githubusercontent.com/bellamoss77/react-photog-portfolio/d044eb6386bfb3acad1a399c0895ecf0c00ebf09/public/UPDATED-LOGO.svg" 
+                        height="60"
                         className="d-inline-block align-top" alt="Logo" />
                 </Navbar.Brand>
                 <div className="hamburger" onClick={toggleMenu}>
@@ -48,22 +54,22 @@ const NavBarComponent = () => {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" onClick={toggleMenu} />
                 <Navbar.Collapse className={menuOpen ? 'show' : ''} id="basic-navbar-nav">
                     <Nav className="ml-auto" id="nav-link-container">
-                        <NavLink to="/" end className="nav-link-custom" activeClassName="active">Home</NavLink>
+                        <NavLink to="/" end className="nav-link-custom" activeClassName="active" onClick={handleLinkClick}>Home</NavLink>
                         <NavDropdown title={
                             <span className="portfolio-title">
-                                Portfolios
+                                Portfolios 
                                 <FontAwesomeIcon icon={dropdownOpen ? faCaretUp : faCaretDown} className="dropdown-icon" />
                             </span>
                         } 
                         id="basic-nav-dropdown"
                         onToggle={toggleDropdown}>
-                            <NavLink to="/landscape" className="dropdown-item" activeClassName="active">Landscape</NavLink>
-                            <NavLink to="/nature" className="dropdown-item" activeClassName="active">Nature</NavLink>
-                            <NavLink to="/pets" className="dropdown-item" activeClassName="active">Pets</NavLink>
-                            <NavLink to="/ruins" className="dropdown-item" activeClassName="active">Ruins</NavLink>
+                            <NavDropdown.Item as={NavLink} to="/landscape" onClick={handleLinkClick}>Landscape</NavDropdown.Item>
+                            <NavDropdown.Item as={NavLink} to="/nature" onClick={handleLinkClick}>Nature</NavDropdown.Item>
+                            <NavDropdown.Item as={NavLink} to="/pets" onClick={handleLinkClick}>Pets</NavDropdown.Item>
+                            <NavDropdown.Item as={NavLink} to="/ruins" onClick={handleLinkClick}>Ruins</NavDropdown.Item>
                         </NavDropdown>
-                        <NavLink to="/about" className="nav-link-custom" activeClassName="active">About</NavLink>
-                        <NavLink to="/contact" className="nav-link-custom" activeClassName="active">Contact</NavLink>
+                        <NavLink to="/about" className="nav-link-custom" activeClassName="active" onClick={handleLinkClick}>About</NavLink>
+                        <NavLink to="/contact" className="nav-link-custom" activeClassName="active" onClick={handleLinkClick}>Contact</NavLink>
                     </Nav>
                 </Navbar.Collapse>
             </Container>

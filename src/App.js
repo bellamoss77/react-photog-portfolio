@@ -1,5 +1,5 @@
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import NavBarComponent from './components/NavBarComponent';
 import HeroSlider from './components/HeroSlider';
 import './App.scss';
@@ -22,6 +22,7 @@ function App() {
         <Route path="/ruins" element={<h1 className='gallery-header'>Ruins</h1>} />
         <Route path="/about" element={<h1 className='about-header'>About</h1>} />
         <Route path="/contact" element={<h1 className='contact-header'>Contact</h1>} />
+        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </div>
   );

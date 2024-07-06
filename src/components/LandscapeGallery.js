@@ -1,12 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import PhotoAlbum from 'react-photo-album';
 import Lightbox from 'yet-another-react-lightbox';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'yet-another-react-lightbox/styles.css';
-import 'yet-another-react-lightbox/styles.css'
+import 'react-lazy-load-image-component/src/effects/blur.css';
 import './LandscapeGallery.scss';
-import { event } from 'jquery';
-
-
 
 const images =  [
     {
@@ -120,17 +118,28 @@ const LandscapeGallery = () => {
     return (
         <div className='gallery'>
             <PhotoAlbum
-              layout='rows'
-              photos={images}
-              onClick={({ index }) => handleOpen(index)}
+                layout='rows'
+                photos={images}
+                renderPhoto={(props) => (
+                    <div onClick={() => handleOpen(props.photo.index)}>
+                        <LazyLoadImage
+                            src={props.photo.src}
+                            alt={props.photo.alt}
+                            width={props.layout.width}
+                            height={props.layout.height}
+                            effect="blur"
+                            style={{ objectFit: 'cover' }}
+                        />
+                    </div>
+                )}
             />
             {open && (
                 <Lightbox
-                  open={open}
-                  close={() => setOpen(false)}
-                  slides={images.map(img => ({ src: img.src, alt: img.alt, caption: img.caption }))}
-                  index={currentImageIndex}
-                  onIndexChange={setCurrentImageIndex}
+                    open={open}
+                    close={() => setOpen(false)}
+                    slides={images.map(img => ({ src: img.src, alt: img.alt, caption: img.caption }))}
+                    index={currentImageIndex}
+                    onIndexChange={setCurrentImageIndex}
                 />
             )}
         </div>
@@ -138,5 +147,3 @@ const LandscapeGallery = () => {
 };
 
 export default LandscapeGallery;
-
-
