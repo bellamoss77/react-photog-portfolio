@@ -4,6 +4,7 @@ import NavBarComponent from './components/NavBarComponent';
 import HeroSlider from './components/HeroSlider';
 import './App.scss';
 import LandscapeGallery from './components/LandscapeGallery';
+import NatureGallery from './components/NatureGallery';
 
 function App() {
   return (
@@ -17,7 +18,12 @@ function App() {
             <LandscapeGallery />
           </div>
         } />
-        <Route path="/nature" element={<h1 className='gallery-header'>Nature</h1>} />
+        <Route path="/nature" element={
+          <div className='nature-page-elements'>
+            <h1 className='gallery-header'>Nature</h1>
+            <NatureGallery />
+          </div>
+        } />
         <Route path="/pets" element={<h1 className='gallery-header'>Pets</h1>} />
         <Route path="/ruins" element={<h1 className='gallery-header'>Ruins</h1>} />
         <Route path="/about" element={<h1 className='about-header'>About</h1>} />

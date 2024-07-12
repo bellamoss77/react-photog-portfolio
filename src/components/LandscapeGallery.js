@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
-import { initLightboxJS, SlideshowLightbox } from 'lightbox.js-react';
-import 'lightbox.js-react/dist/index.css';
+import Lightbox from 'yet-another-react-lightbox';
 import 'react-lazy-load-image-component/src/effects/blur.css';
+import 'yet-another-react-lightbox/styles.css';
 import './LandscapeGallery.scss';
 
 const LandscapeGallery = () => {
@@ -124,49 +124,68 @@ const LandscapeGallery = () => {
         }
     ];
 
-    useEffect(() => {
-        initLightboxJS("2EFE-ED5F-DDF2-780D");
-    }, []);
-
     const handleOpen = (index) => {
-        setCurrentImageIndex(index);
-        setIsOpen(false); // Close the lightbox first
-        setTimeout(() => {
-            setIsOpen(true); // Re-open the lightbox to trigger the re-render with the correct index
-        }, 0);
+      console.log(`handleOpen: Opening image at index: ${index}`);
+      setCurrentImageIndex(index);
+      setIsOpen(true);
     };
-
+  
+    const handleClose = () => {
+      setIsOpen(false);
+    };
+  
+    const handleNext = () => {
+      const nextIndex = (currentImageIndex + 1) % images.length;
+      console.log(`handleNext: Moving to next image. Next index: ${nextIndex}`);
+      setCurrentImageIndex(nextIndex);
+    };
+  
+    const handlePrev = () => {
+      const prevIndex = (currentImageIndex + images.length - 1) % images.length;
+      console.log(`handlePrev: Moving to previous image. Previous index: ${prevIndex}`);
+      setCurrentImageIndex(prevIndex);
+    };
+  
     return (
-        <div className="gallery">
-            <div className="photo-album">
-                {images.map((image, index) => {
-                    const isVertical = image.height > image.width;
-                    const itemClass = isVertical ? 'photo-item-vertical' : 'photo-item-horizontal';
-                    return (
-                        <div key={index} className={`photo-item ${itemClass}`} onClick={() => handleOpen(index)}>
-                            <LazyLoadImage
-                                src={image.src}
-                                alt={image.alt}
-                                width="100%"
-                                height="auto"
-                                effect="blur"
-                                style={{ objectFit: 'cover' }}
-                            />
-                        </div>
-                    );
-                })}
-            </div>
-            <SlideshowLightbox
-                key={currentImageIndex} // Force re-render when currentImageIndex changes
-                images={images}
-                showThumbnails={true}
-                open={isOpen}
-                lightboxIdentifier="lbox1"
-                onClose={() => setIsOpen(false)}
-                startIndex={currentImageIndex}
-            />
+      <div className="gallery">
+        <div className="photo-album">
+          {images.map((image, index) => {
+            const isVertical = image.height > image.width;
+            const itemClass = isVertical ? 'photo-item-vertical' : 'photo-item-horizontal';
+            return (
+              <div key={index} className={`photo-item ${itemClass}`} onClick={() => handleOpen(index)}>
+                <LazyLoadImage
+                  src={image.src}
+                  alt={image.alt}
+                  width="100%"
+                  height="auto"
+                  effect="blur"
+                  style={{ objectFit: 'cover' }}
+                />
+              </div>
+            );
+          })}
         </div>
+        {isOpen && (
+          <Lightbox
+            index={currentImageIndex}
+            on={{ view: ({ index: currentImageIndex }) => setCurrentImageIndex(currentImageIndex) }}
+            open={isOpen}
+            close={handleClose}
+            slides={images.map(image => ({
+              src: image.src,
+              alt: image.alt,
+              title: image.caption,
+              width: image.width,
+              height: image.height,
+            }))}
+            currentIndex={currentImageIndex}
+            onPrev={handlePrev}
+            onNext={handleNext}
+          />
+        )}
+      </div>
     );
-};
-
-export default LandscapeGallery;
+  };
+  
+  export default LandscapeGallery;
