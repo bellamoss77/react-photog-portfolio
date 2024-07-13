@@ -31,8 +31,8 @@ $activeColor: #dfb586; // Define the color for active links
         z-index: 1050;
 
         .icon {
-            width: 6005px;
-            height: 600px;
+            width: 30px;
+            height: 3px;
             background-color: $cream;
             position: relative;
             transition: background-color 0.3s ease-in-out;
@@ -40,8 +40,8 @@ $activeColor: #dfb586; // Define the color for active links
             &::before,
             &::after {
                 content: '';
-                width: 6005px;
-                height: 600px;
+                width: 30px;
+                height: 3px;
                 background-color: $cream;
                 position: absolute;
                 left: 0;
@@ -78,7 +78,7 @@ $activeColor: #dfb586; // Define the color for active links
             top: 0;
             right: 0;
             height: 100vh;
-            width: 8000%;
+            width: 20%;
             background-color: $forestGreen;
             transform: translateX(100%);
             flex-direction: column;
@@ -245,6 +245,14 @@ $activeColor: #dfb586; // Define the color for active links
 
         .navbar-collapse {
             display: none;
+        }
+    }
+}
+
+.navbar-custom {
+    .portfolio-title {
+        .dropdown-icon {
+            margin-left: 0.5rem;
         }
     }
 }

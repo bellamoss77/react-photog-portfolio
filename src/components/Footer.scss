@@ -1,0 +1,60 @@
+@import url("https://use.typekit.net/efa7ivj.css");
+
+$cursiveFont: 'dream-big-wide', cursive;
+$sansSerifFont: 'arboria', sans-serif;
+$cream: #FCFBF4;
+$beige: #9F8C76;
+$darkBeige: rgba(78,70,60,1);
+$lightBeige: #dfb586;
+$deepBlue: rgba(0,38,62,1);
+$forestGreen: rgba(0,51,20,1);
+
+@mixin flex($direction, $justify, $align) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: $align;
+}
+
+//      STYLES
+
+* {
+    box-sizing: border-box;
+}
+
+#page-footer {
+    height: 10vh;
+    width: 100%;
+    background-color: $forestGreen;
+
+
+    .footer-content {
+        height: 100%;
+        width: 98%;
+        @include flex(row, space-between, center);
+
+        .contact-info {
+            height: 100%;
+            object-fit: cover;
+            line-height: 0.1;
+            @include flex(column, center, flex-start);
+            font-family: $sansSerifFont;
+            color: $cream;
+            font-weight: 600;
+            font-size: 0.75rem;
+            margin: 0;
+            padding: 0;
+
+            .street,
+            .city-state-zip,
+            .phone,
+            .email {
+                margin-left: 25px;
+            }
+
+            .street {
+                margin-top: 10px;
+            }
+        }
+    }
+}

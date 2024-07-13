@@ -182,6 +182,11 @@ const LandscapeGallery = () => {
             currentIndex={currentImageIndex}
             onPrev={handlePrev}
             onNext={handleNext}
+            keyboard={{
+                        close: 'Escape',
+                        next: 'ArrowRight',
+                        prev: 'ArrowLeft'
+                    }}
           />
         )}
       </div>
