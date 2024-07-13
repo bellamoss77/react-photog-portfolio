@@ -73,7 +73,9 @@ $forestGreen: rgba(0,51,20,1);
     }
 }
 
-._2pA2G {
+.lightbox-caption {
     font-family: $sansSerifFont !important;
     font-size: 1.5rem;
+    z-index: 100000;
+    color: $cream;
 }

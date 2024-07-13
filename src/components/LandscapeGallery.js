@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import Lightbox from 'yet-another-react-lightbox';
+import Captions from 'yet-another-react-lightbox/plugins/captions';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import 'yet-another-react-lightbox/styles.css';
+import 'yet-another-react-lightbox/plugins/captions.css';
 import './LandscapeGallery.scss';
 
 const LandscapeGallery = () => {
@@ -145,6 +147,8 @@ const LandscapeGallery = () => {
       console.log(`handlePrev: Moving to previous image. Previous index: ${prevIndex}`);
       setCurrentImageIndex(prevIndex);
     };
+
+    const captionsRef = React.useRef(null);
   
     return (
       <div className="gallery">
@@ -168,6 +172,8 @@ const LandscapeGallery = () => {
         </div>
         {isOpen && (
           <Lightbox
+            plugins={[Captions]}
+            captions={{ ref: captionsRef }}
             index={currentImageIndex}
             on={{ view: ({ index: currentImageIndex }) => setCurrentImageIndex(currentImageIndex) }}
             open={isOpen}
