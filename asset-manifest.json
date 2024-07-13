@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/react-photog-portfolio/static/css/main.5b1d7cf5.css",
-    "main.js": "/react-photog-portfolio/static/js/main.11ca3f79.js",
+    "main.css": "/react-photog-portfolio/static/css/main.bea33cba.css",
+    "main.js": "/react-photog-portfolio/static/js/main.07907174.js",
     "static/media/slick.svg": "/react-photog-portfolio/static/media/slick.2630a3e3eab21c607e21.svg",
     "static/media/slick.eot": "/react-photog-portfolio/static/media/slick.a4e97f5a2a64f0ab1323.eot",
     "static/media/slick.ttf": "/react-photog-portfolio/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "static/media/slick.woff": "/react-photog-portfolio/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/react-photog-portfolio/index.html",
-    "main.5b1d7cf5.css.map": "/react-photog-portfolio/static/css/main.5b1d7cf5.css.map",
-    "main.11ca3f79.js.map": "/react-photog-portfolio/static/js/main.11ca3f79.js.map"
+    "main.bea33cba.css.map": "/react-photog-portfolio/static/css/main.bea33cba.css.map",
+    "main.07907174.js.map": "/react-photog-portfolio/static/js/main.07907174.js.map"
   },
   "entrypoints": [
-    "static/css/main.5b1d7cf5.css",
-    "static/js/main.11ca3f79.js"
+    "static/css/main.bea33cba.css",
+    "static/js/main.07907174.js"
   ]
 }
